@@ -15,9 +15,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let tipDefault = defaults.integer(forKey: "tipDefault")
+        tipControl.selectedSegmentIndex = tipDefault
+        
     }
 
     @IBAction func onTap(_ sender: Any) {
