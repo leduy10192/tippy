@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" title="Tip Calculator" id="Xa8-fQ-2vN">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="yVM-VO-ppt">
                             <connections>
-                                <segue destination="y3E-04-Tq0" kind="show" identifier="HomeToSetting" id="6Ip-Kg-rpI"/>
+                                <action selector="settingPressed:" destination="BYZ-38-t0r" id="XzR-LR-vAV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,6 +96,7 @@
                         <outlet property="tipControl" destination="VwN-3L-4Rs" id="Dye-MC-22q"/>
                         <outlet property="tipLabel" destination="TdR-7V-tao" id="d9T-Sg-Shu"/>
                         <outlet property="totalLabel" destination="wcV-le-DDo" id="mp2-sL-ThB"/>
+                        <segue destination="y3E-04-Tq0" kind="show" identifier="HomeToSetting" id="1sP-D1-zYB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -124,7 +125,6 @@
                                     <segment title="20%"/>
                                 </segments>
                                 <connections>
-                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="72l-5Z-jYW"/>
                                     <action selector="tipControlPressed:" destination="y3E-04-Tq0" eventType="valueChanged" id="2bt-xg-WLR"/>
                                 </connections>
                             </segmentedControl>
@@ -141,7 +141,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="FjQ-Bq-YcX"/>
                     <connections>
-                        <outlet property="tipControl" destination="5fJ-gt-cfN" id="T9E-75-GBI"/>
+                        <outlet property="tipControl" destination="5fJ-gt-cfN" id="GU4-ia-tAv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4md-ot-S2Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

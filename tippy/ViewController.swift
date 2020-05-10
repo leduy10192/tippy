@@ -8,19 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SettingsDelegate {
+
+    
 
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    
     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let tipDefault = defaults.integer(forKey: "tipDefault")
-        tipControl.selectedSegmentIndex = tipDefault
         
     }
 
@@ -42,6 +43,23 @@ class ViewController: UIViewController {
         //Update the tip and total labels
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f",total)
+    }
+    
+    @IBAction func settingPressed(_ sender: Any) {
+        performSegue(withIdentifier: "HomeToSetting", sender: self)
+    }
+    
+    func didUpdateDefault(_ SettingViewController: SettingViewController, tipDefault: Int) {
+        print("Ta", tipDefault)
+        tipControl.selectedSegmentIndex = tipDefault
+        totalLabel.text = "\(tipDefault)"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeToSetting" {
+            let VC = segue.destination as! SettingViewController
+            VC.delegate = self
+        }
     }
 }
 

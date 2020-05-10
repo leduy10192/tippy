@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol SettingsDelegate {
+    func didUpdateDefault(_ SettingViewController: SettingViewController, tipDefault: Int)
+}
+
 class SettingViewController: UIViewController {
 
     @IBOutlet weak var tipControl: UISegmentedControl!
     
-    let defaults = UserDefaults.standard
+    var delegate : SettingsDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,10 +25,8 @@ class SettingViewController: UIViewController {
     
     @IBAction func tipControlPressed(_ sender: Any) {
         let tipDefault = tipControl.selectedSegmentIndex
-        defaults.set(tipDefault, forKey: "tipDefault")
-
-        // Force UserDefaults to save.
-        defaults.synchronize()
+        print ("ti", tipDefault)
+        delegate?.didUpdateDefault(self, tipDefault: tipDefault)
     }
     
     
